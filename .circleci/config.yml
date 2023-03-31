@@ -28,4 +28,4 @@ workflows:
             - org-global
             - docker_hubs
           requires:
-            - say_goodbye
+            - say_hello
