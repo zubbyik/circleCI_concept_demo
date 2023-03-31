@@ -1,17 +1,31 @@
 version: 2.1
 jobs:
-  build:
+  say_hello:
     docker:
       - image: cimg/base:2022.05
         auth:
-          username: ${docker_username}
-          password: ${docker_password}
+          username: docker_username
+          password: docker_password
     steps:
-      - run: echo "Hello world"
+      - run: echo "say hello to YAML!"
+  say_goodbye:
+      docker:
+        - image: cimg/base:2022.05
+          auth:
+            username: docker_username
+            password: docker_password
+      steps:
+        - run: echo "say goodbye to YAML!"
 workflows:
-  initial_build:
+  hello_and_goodbye:
     jobs:
-      - build:
+      - say_hello:
           context: 
             - org-global
             - docker_hubs
+      - say_goodbye:
+          context: 
+            - org-global
+            - docker_hubs
+          requires:
+            - say_goodbye
