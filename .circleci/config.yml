@@ -6,6 +6,8 @@ jobs:
         auth:
           username: ${docker_username}
           password: ${docker_password}
+    steps:
+      - run: echo "Hello world"
 workflows:
   initial_build:
     jobs:
