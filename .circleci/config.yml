@@ -10,16 +10,17 @@ jobs:
       - image: cimg/base:2022.05
     steps:
       - run: echo "say goodbye to YAML!"
+context: &context
+  context:
+      - org-global
+      - docker_hubs
+
 workflows:
   hello_and_goodbye:
     jobs:
       - say_hello:
-          context: 
-            - org-global
-            - docker_hubs
+          <<: *context
       - say_goodbye:
-          context: 
-            - org-global
-            - docker_hubs
+          <<: *context
           requires:
             - say_hello
