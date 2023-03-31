@@ -3,17 +3,11 @@ jobs:
   say_hello:
     docker:
       - image: cimg/base:2022.05
-        auth:
-          username: docker_username
-          password: docker_password
     steps:
       - run: echo "say hello to YAML!"
   say_goodbye:
     docker:
       - image: cimg/base:2022.05
-        auth:
-          username: docker_username
-          password: docker_password
     steps:
       - run: echo "say goodbye to YAML!"
 workflows:
